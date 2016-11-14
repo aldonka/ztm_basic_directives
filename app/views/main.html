@@ -7,8 +7,18 @@
         <strong>{{input | reverseString}}</strong>
     </div>
     <div class="row">
-        <strong>Ad3.</strong> <y-widget ></y-widget>
-        <strong>Ad3.</strong> <x-widget my="yoyoyooyo"></x-widget>
+        <strong>Ad3.</strong>
+        <y-widget></y-widget>
+    </div>
+    <div class="row">
+        <strong>Ad4.</strong>
+        <with-elem my-widget="input"></with-elem>
+    </div>
+    <div class="row">
+        <strong>Ad5.</strong>
+        <div ng-repeat="i in ex_table">
+            <repeat-xtimes times="5" value="{{i}}"></repeat-xtimes>
+        </div>
     </div>
 
 

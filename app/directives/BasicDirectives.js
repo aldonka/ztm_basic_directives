@@ -2,21 +2,36 @@
  * Created by Dominika on 2016-11-14.
  */
 angular.module('myApp')
-    .directive('yWidget', function($timeout){
+    .directive('yWidget', [function(){
             return {
                 restrict: 'E',
                 template:"<b>Hello Angular </b>"
         };
-        }
-    )
-    .directive('xWidget', function($timeout){
-            return {
-                restrict: 'E',
-                scope: {my: "="},
-                link: function(scope, el, attr){
-                    el.text("New wal" + attr.my);
-                    console.log("print attributes value: " + attr.my );
+    }])
+    .directive('withElem', [function(){
+        return {
+            restrict: 'E',
+            scope: {
+                myWidget : "=myWidget"
+            },
+            link: function(scope, el, attr){
+                el.text("Value : " + attr.myWidget);
+            }
+        };
+    }])
+    .directive('repeatXtimes', [function(){
+        return {
+            restrict: 'E',
+            scope: {
+                times : "=",
+                value: "@"
+            },
+            link: function(scope, el, attr){
+                var printedValue = "";
+                for(var i = 0; i < attr.times; i++){
+                    printedValue += attr.value + " | ";
                 }
-            };
-        }
-    );
+                el.text("Value : " + printedValue);
+            }
+        };
+    }]);
